@@ -31,12 +31,24 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+  const tagVariants = {
+    'on-sale': {
+      tag: 'Sale',
+      color: '#C5295D'
+    },
+    'new-release': {
+      tag: 'Just Released!',
+      color: '#6868D9'
+    }
+  }
+
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
+        <Tag v-if="tagVariants[variant]">{tagVariants[variant]?.tag}</Tag>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -53,15 +65,31 @@ const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
+  flex: 1 1 300px;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  position: relative;
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  width:100%;
+`;
+
+const Tag = styled.div`
+  position: absolute;
+  top:12px;
+  right:-4px;
+  background-color:#6868D9;
+  color:#fff;
+  font-weight:bold;
+  padding:8px;
+  border-radius:4px;
+`;
 
 const Row = styled.div`
   font-size: 1rem;

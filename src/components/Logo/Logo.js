@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { WEIGHTS } from '../../constants';
+import Header from '../Header/Header';
 
 const Logo = (props) => {
   return (
